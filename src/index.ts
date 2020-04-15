@@ -2,10 +2,10 @@ export class Guid {
   public static Empty: string = '00000000-0000-0000-0000-000000000000';
 
   public static NewGuid(): string {
-    var d = new Date().getTime();
-    var d2 = (performance && performance.now && performance.now() * 1000) || 0;
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-      var r = Math.random() * 16;
+    let d = new Date().getTime();
+    let d2 = (performance && performance.now && performance.now() * 1000) || 0;
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+      let r = Math.random() * 16;
       if (d > 0) {
         r = (d + r) % 16 | 0;
         d = Math.floor(d / 16);
