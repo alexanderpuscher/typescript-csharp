@@ -4,6 +4,10 @@
         "tslint-config-prettier"
     ],
     "rules": {
-        "no-bitwise": false
+        "no-bitwise": false,
+        "only-arrow-functions": false,
+        "prefer-const": false,
+        "prefer-for-of": false,
+        "forin": false
     }
 }
