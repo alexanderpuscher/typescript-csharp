@@ -1,7 +1,7 @@
 {
-  "name": "typescript-utilities",
-  "version": "1.0.0",
-  "description": "",
+  "name": "typescript-csharp",
+  "version": "0.2.1",
+  "description": "Simple lightweight TypeScript library",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -19,9 +19,18 @@
     "type": "git",
     "url": "git+https://github.com/alexanderpuscher/typescript-utilities.git"
   },
-  "keywords": [],
-  "author": "Alexander Puscher <alexander.puscher@immowelt.de>",
-  "license": "ISC",
+  "keywords": [
+    "typescript",
+    "guid",
+    "string",
+    "list",
+    "dictionary"
+  ],
+  "author": "Alexander Puscher <a.puscher@gmx.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexanderpuscher/typescript-csharp/issues"
+  },
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "@types/node": "^13.11.1",
