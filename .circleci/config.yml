@@ -111,9 +111,6 @@ workflows:
       - lint:
           requires:
             - checkout
-      - coveralls:
-          requires:
-            - test
       - build:
           requires:
             - test
