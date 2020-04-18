@@ -64,8 +64,16 @@ jobs:
           at: ~/repo
 
       - run:
-          name: Test TypeScript code
-          command: npm run test
+        name: "JavaScript Test Suite"
+        environment:
+          JEST_JUNIT_OUTPUT: reports/junit/js-test-results.xml
+        command: npm run test -- --ci --testResultsProcessor="jest-junit"
+
+      - store_test_results:
+          path: reports/junit
+      
+      - store_artifacts:
+          path: reports/junit
 
       - persist_to_workspace:
           root: ~/repo
