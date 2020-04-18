@@ -1,10 +1,11 @@
 ![CircleCI](https://img.shields.io/circleci/build/github/alexanderpuscher/typescript-csharp?token=408458f65976cf5d16d80380f7d9aacd3f34590f)
+![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/alexanderpuscher_typescript-csharp?server=https%3A%2F%2Fsonarcloud.io)
 ![npm](https://img.shields.io/npm/v/typescript-csharp)
 ![npm](https://img.shields.io/npm/dw/typescript-csharp)
 
 # Simple lightweight .NET Based TypeScript Library ![GitHub](https://img.shields.io/github/license/alexanderpuscher/typescript-csharp)
 
-## v0.2.2
+## v0.3.0
 
 ### Guid
 ```typescript
@@ -70,7 +71,7 @@
     - remove(predicate: (item: T) => boolean): void;
     - clear(): void;
 
-- IDictionary<TKey, TValue>
+- IDictionary<TKey, TValue> extends IEnumerable<T>
     - add(key: TKey, value: TValue): void;
     - addRange(items: KeyValuePair<TKey, TValue>[]): void;
     - remove(predicate: (item: KeyValuePair<TKey, TValue>) => boolean): void;
@@ -80,6 +81,69 @@
     - tryGetValue(key: TKey): TValue;
 ```
 
+### DateTime
+```typescript
+- static get today(): DateTime;
+- static get utcNow(): DateTime;
+- static get now(): DateTime;
+- static parse(s: string): DateTime;
+- constructor();
+- constructor(time?: number | string);
+- constructor(year?: number, month?: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number);
+- get day(): number;
+- get dayOfWeek(): number;
+- get month(): number;
+- get year(): number;
+- get hour(): number;
+- get minute(): number;
+- get second(): number;
+- get milliSecond(): number;
+- get msSinceEpoch(): number;
+- get timeZoneOffset(): TimeSpan;
+- get date(): DateTime;
+- get time(): TimeSpan;
+- toLocaleString: (locales?: string | string[], options?: Intl.DateTimeFormatOptions) => string;
+- toLocaleDateString: (locales?: string | string[], options?: Intl.DateTimeFormatOptions) => string;
+- toLocaleTimeString: (locales?: string | string[], options?: Intl.DateTimeFormatOptions) => string;
+- toUTCString: () => string;
+- toISOString: () => string;
+- toJSON: (key?: any) => string;
+- toTimeString: () => string;
+- toDateString: () => string;
+- add(d: DateTime | TimeSpan): DateTime;
+- add(days: number, hours?: number, minutes?: number, seconds?: number, milliseconds?: number): DateTime;
+- addMonths(m: number): DateTime;
+- addYears(y: number): DateTime;
+- diff(rhs: Date | DateTime): TimeSpan;
+- equals(d: DateTime): boolean;
+- toRelativeString(dt?: DateTime | Date): string;
+```
+
+### TimeSpan
+```typescript
+- static fromDays(n: number): TimeSpan;
+- static fromHours(n: number): TimeSpan;
+- static fromMinutes(n: number): TimeSpan;
+- static fromSeconds(n: number): TimeSpan;
+- static parse(text: string): TimeSpan;
+- get totalSeconds(): number;
+- get totalMinutes(): number;
+- get totalHours(): number;
+- get totalDays(): number;
+- get totalMilliseconds(): number;
+- get days(): number;
+- get hours(): number;
+- get minutes(): number;
+- get seconds(): number;
+- get milliseconds(): number;
+- get duration(): TimeSpan;
+- get trimmedTime(): TimeSpan;
+- constructor(ms: number);
+- constructor(days: number, hours: number, minutes?: number, seconds?: number, milliseconds?: number);
+- toString(formatAs12?: boolean): string;
+- add(ts: TimeSpan): TimeSpan;
+- equals(ts: TimeSpan): boolean;
+```
+
 ## Next steps
-- Analyze code-coverage with [Codecov](https://codecov.io/) / [Sonarcloud](https://sonarcloud.io/)
-- RegularExpressions, DateTime, TimeSpan
+- RegularExpressions

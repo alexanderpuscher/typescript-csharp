@@ -63,10 +63,6 @@ jobs:
         
       - store_artifacts:
           path: reports/junit
-
-      - persist_to_workspace:
-          root: ~/repo
-          <<: *whitelist
         
   test:
     <<: *defaults
@@ -87,10 +83,6 @@ jobs:
       
       - store_artifacts:
           path: reports/junit
-
-      - persist_to_workspace:
-          root: ~/repo
-          <<: *whitelist
         
   build:
     <<: *defaults
@@ -102,6 +94,9 @@ jobs:
       - run:
           name: Build TypeScript code
           command: npm run build
+
+      - store_artifacts:
+          path: typescript-csharp-*.tgz
 
       - persist_to_workspace:
           root: ~/repo
@@ -136,3 +131,44 @@ workflows:
           requires:
             - lint
             - test
+  release:
+    jobs:
+      - checkout:
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
+      - test:
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
+          requires:
+            - checkout
+      - lint:
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
+          requires:
+            - checkout
+      - build:
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
+          requires:
+            - test
+            - lint
+      - deploy:
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
+          requires:
+            - build

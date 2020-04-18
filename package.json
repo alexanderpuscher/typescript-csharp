@@ -1,6 +1,6 @@
 {
   "name": "typescript-csharp",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Simple lightweight .NET Based TypeScript Library",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -24,8 +24,11 @@
     "csharp",
     "guid",
     "string",
+    "stringbuilder",
     "list",
-    "dictionary"
+    "dictionary",
+    "datetime",
+    "timespan"
   ],
   "author": "Alexander Puscher <a.puscher@gmx.net>",
   "license": "MIT",
