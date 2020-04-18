@@ -54,7 +54,7 @@ jobs:
 
       - run:
           name: Lint TypeScript code
-          command: npm run lint
+          command: npm run lint -- -o reports/junit/js-lint-results.xml -t junit
         
   test:
     <<: *defaults
@@ -64,10 +64,10 @@ jobs:
           at: ~/repo
 
       - run:
-          name: "JavaScript Test Suite"
+          name: "Test TypeScript code"
           environment:
             JEST_JUNIT_OUTPUT: reports/junit/js-test-results.xml
-          command: npm run test -- --ci --testResultsProcessor="jest-junit"
+          command: npm run test -- --ci --reporters=jest-junit
 
       - store_test_results:
           path: reports/junit
