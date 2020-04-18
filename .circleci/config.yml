@@ -7,8 +7,9 @@ whitelist: &whitelist
   paths:
     - lib/*
     - node_modules/*
+    - reports/*
     - src/*
-    - test/*
+    - tests/*
     - .npmignore
     - .prettierrc
     - CODE_OF_CONDUCT.md
@@ -57,6 +58,12 @@ jobs:
           name: Lint TypeScript code
           command: npm run lint -- -o reports/junit/js-lint-results.xml -t junit
       
+      - store_test_results:
+          path: reports/junit
+        
+      - store_artifacts:
+          path: reports/junit
+
       - persist_to_workspace:
           root: ~/repo
           <<: *whitelist
