@@ -2,6 +2,9 @@ defaults: &defaults
   working_directory: ~/repo
   docker:
     - image: circleci/node:8.0
+  machine:
+    node:
+      version: 8.9.4
 
 whitelist: &whitelist
   paths:
