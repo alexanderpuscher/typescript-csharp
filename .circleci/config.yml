@@ -5,14 +5,15 @@ defaults: &defaults
 
 whitelist: &whitelist
   paths:
-    - .npmignore
-    - coverage/*
-    - dist/*
+    - lib/*
     - node_modules/*
     - src/*
     - test/*
+    - .npmignore
+    - .prettierrc
     - CODE_OF_CONDUCT.md
-    - LICENSE.md
+    - jestconfig.json
+    - LICENSE
     - package.json
     - README.md
     - tsconfig.json
