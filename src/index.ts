@@ -1,4 +1,5 @@
 export * from './Guid';
 export * from './String';
-export * from './List';
-export * from './Dictionary';
+export * from './StringBuilder';
+export * from './Collections/List';
+export * from './Collections/Dictionary';

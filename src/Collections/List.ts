@@ -1,13 +1,14 @@
-import { IEnumerable, IComparer, IEqualityComparer } from './Interfaces';
-import { Group } from './Group';
-import { ITEM_NOT_FOUND, MULTIPLE_INSTANCES_FOUND } from './Shared';
+/*!
+ * @author alexanderpuscher / https://github.com/alexanderpuscher/
+ * Licensing: MIT https://github.com/alexanderpuscher/typescript-csharp/blob/master/LICENSE
+ */
 
-export interface IList<T> extends IEnumerable<T> {
-  add(item: T): void;
-  addRange(items: T[]): void;
-  remove(predicate: (item: T) => boolean): void;
-  clear(): void;
-}
+import { Group } from './Group';
+import { ITEM_NOT_FOUND, MULTIPLE_INSTANCES_FOUND } from '../Shared';
+import { IList } from './IList';
+import { IEnumerable } from './IEnumerable';
+import { IComparer } from './IComparer';
+import { IEqualityComparer } from './IEqualityComparer';
 
 export class List<T> implements IList<T> {
   private list: T[] = new Array<T>();

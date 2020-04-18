@@ -1,7 +1,7 @@
 {
   "name": "typescript-csharp",
-  "version": "0.2.1",
-  "description": "Simple lightweight TypeScript library",
+  "version": "0.2.2",
+  "description": "Simple lightweight .NET Based TypeScript Library",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -17,10 +17,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexanderpuscher/typescript-utilities.git"
+    "url": "git+https://github.com/alexanderpuscher/typescript-csharp.git"
   },
   "keywords": [
     "typescript",
+    "csharp",
     "guid",
     "string",
     "list",

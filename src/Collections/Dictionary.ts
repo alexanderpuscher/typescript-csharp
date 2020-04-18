@@ -1,19 +1,16 @@
-import { IComparer, IEnumerable, IEqualityComparer } from './Interfaces';
+/*!
+ * @author alexanderpuscher / https://github.com/alexanderpuscher/
+ * Licensing: MIT https://github.com/alexanderpuscher/typescript-csharp/blob/master/LICENSE
+ */
+
 import { Group } from './Group';
 import { List } from './List';
-import { MULTIPLE_INSTANCES_FOUND, ITEM_NOT_FOUND, DUPLICATE_KEY } from './Shared';
+import { MULTIPLE_INSTANCES_FOUND, ITEM_NOT_FOUND, DUPLICATE_KEY } from '../Shared';
 import { KeyValuePair } from './KeyValuePair';
-
-export interface IDictionary<TKey, TValue> extends IEnumerable<KeyValuePair<TKey, TValue>> {
-  add(key: TKey, value: TValue): void;
-  addRange(items: KeyValuePair<TKey, TValue>[]): void;
-  remove(predicate: (item: KeyValuePair<TKey, TValue>) => boolean): void;
-  clear(): void;
-
-  containsKey(key: TKey): boolean;
-  containsValue(value: TValue): boolean;
-  tryGetValue(key: TKey): TValue;
-}
+import { IEnumerable } from './IEnumerable';
+import { IComparer } from './IComparer';
+import { IEqualityComparer } from './IEqualityComparer';
+import { IDictionary } from './IDictionary';
 
 export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
   private list: KeyValuePair<TKey, TValue>[] = new Array<KeyValuePair<TKey, TValue>>();

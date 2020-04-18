@@ -1,7 +1,12 @@
+/*!
+ * @author alexanderpuscher / https://github.com/alexanderpuscher/
+ * Licensing: MIT https://github.com/alexanderpuscher/typescript-csharp/blob/master/LICENSE
+ */
+
 export class Guid {
   public static Empty: string = '00000000-0000-0000-0000-000000000000';
 
-  public static NewGuid(): string {
+  public static newGuid(): string {
     let d = new Date().getTime();
     let d2 = (performance && performance.now && performance.now() * 1000) || 0;
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
