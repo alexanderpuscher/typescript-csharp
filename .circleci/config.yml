@@ -64,10 +64,10 @@ jobs:
           at: ~/repo
 
       - run:
-        name: "JavaScript Test Suite"
-        environment:
-          JEST_JUNIT_OUTPUT: reports/junit/js-test-results.xml
-        command: npm run test -- --ci --testResultsProcessor="jest-junit"
+          name: "JavaScript Test Suite"
+          environment:
+            JEST_JUNIT_OUTPUT: reports/junit/js-test-results.xml
+          command: npm run test -- --ci --testResultsProcessor="jest-junit"
 
       - store_test_results:
           path: reports/junit
