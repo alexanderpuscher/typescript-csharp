@@ -136,13 +136,13 @@ workflows:
       - checkout:
           filters:
             tags:
-              only: /v[0-9]+(\.[0-9]+)*/
+              only: /v[0-9]+(\.[0-9]+)(\.[0-9]+)*/
             branches:
               ignore: /.*/
       - test:
           filters:
             tags:
-              only: /v[0-9]+(\.[0-9]+)*/
+              only: /v[0-9]+(\.[0-9]+)(\.[0-9]+)*/
             branches:
               ignore: /.*/
           requires:
@@ -150,7 +150,7 @@ workflows:
       - lint:
           filters:
             tags:
-              only: /v[0-9]+(\.[0-9]+)*/
+              only: /v[0-9]+(\.[0-9]+)(\.[0-9]+)*/
             branches:
               ignore: /.*/
           requires:
@@ -158,7 +158,7 @@ workflows:
       - build:
           filters:
             tags:
-              only: /v[0-9]+(\.[0-9]+)*/
+              only: /v[0-9]+(\.[0-9]+)(\.[0-9]+)*/
             branches:
               ignore: /.*/
           requires:
@@ -167,7 +167,7 @@ workflows:
       - deploy:
           filters:
             tags:
-              only: /v[0-9]+(\.[0-9]+)*/
+              only: /v[0-9]+(\.[0-9]+)(\.[0-9]+)*/
             branches:
               ignore: /.*/
           requires:
