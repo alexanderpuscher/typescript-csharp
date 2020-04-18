@@ -131,7 +131,8 @@ workflows:
             - checkout
       - test:
           requires:
-            - lint
+            - checkout
       - build:
           requires:
+            - lint
             - test
