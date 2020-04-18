@@ -125,13 +125,12 @@ workflows:
   build:
     jobs:
       - checkout
-      - test:
-          requires:
-            - checkout
       - lint:
           requires:
             - checkout
+      - test:
+          requires:
+            - lint
       - build:
           requires:
             - test
-            - lint
