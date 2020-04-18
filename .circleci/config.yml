@@ -1,5 +1,8 @@
 defaults: &defaults
   working_directory: ~/repo
+  docker:
+    - image: circleci/node:8.0
+
 whitelist: &whitelist
   paths:
     - .npmignore
@@ -14,9 +17,9 @@ whitelist: &whitelist
     - README.md
     - tsconfig.json
     - tslint.json
+
 version: 2.1
-orbs:
-  node: circleci/node@1.1.6
+
 jobs:
   checkout:
     <<: *defaults

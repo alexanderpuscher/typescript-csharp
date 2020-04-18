@@ -1,11 +1,10 @@
-<!-- ![GitHub package.json version](https://img.shields.io/github/package-json/v/alexanderpuscher/typescript-csharp) -->
-![GitHub](https://img.shields.io/github/license/alexanderpuscher/typescript-csharp)
+![CircleCI](https://img.shields.io/circleci/build/github/alexanderpuscher/typescript-csharp?token=408458f65976cf5d16d80380f7d9aacd3f34590f)
 ![npm](https://img.shields.io/npm/v/typescript-csharp)
 ![npm](https://img.shields.io/npm/dw/typescript-csharp)
 
-# Simple lightweight .NET Based TypeScript Library
+# Simple lightweight .NET Based TypeScript Library ![GitHub](https://img.shields.io/github/license/alexanderpuscher/typescript-csharp)
 
-## v0.2.2:
+## v0.2.2
 
 ### Guid
 ```typescript
@@ -81,6 +80,6 @@
     - tryGetValue(key: TKey): TValue;
 ```
 
-Next steps:
+## Next steps
 - Analyze code-coverage with [Codecov](https://codecov.io/) / [Sonarcloud](https://sonarcloud.io/)
 - RegularExpressions, DateTime, TimeSpan
