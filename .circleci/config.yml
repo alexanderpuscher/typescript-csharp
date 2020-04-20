@@ -5,7 +5,7 @@ defaults: &defaults
 
 whitelist: &whitelist
   paths:
-    - lib/*
+    - dist/*
     - node_modules/*
     - reports/*
     - src/*
