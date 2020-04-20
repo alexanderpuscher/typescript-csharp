@@ -1,9 +1,9 @@
 {
   "name": "typescript-csharp",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Simple lightweight .NET Based TypeScript Library",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest --config jestconfig.json",
     "build": "tsc",
@@ -47,6 +47,6 @@
     "typescript": "^3.8.3"
   },
   "files": [
-    "lib/**/*"
+    "dist/**/*"
   ]
 }
