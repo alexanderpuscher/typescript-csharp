@@ -1,11 +1,18 @@
-![CircleCI](https://img.shields.io/circleci/build/github/alexanderpuscher/typescript-csharp?token=408458f65976cf5d16d80380f7d9aacd3f34590f)
-![Sonar Quality Gate](https://img.shields.io/sonar/quality_gate/alexanderpuscher_typescript-csharp?server=https%3A%2F%2Fsonarcloud.io)
+# Simple lightweight .NET Based TypeScript Library
+
+![Build Status](https://img.shields.io/circleci/build/github/alexanderpuscher/typescript-csharp?token=408458f65976cf5d16d80380f7d9aacd3f34590f)
+![Quality Gate](https://img.shields.io/sonar/quality_gate/alexanderpuscher_typescript-csharp?server=https%3A%2F%2Fsonarcloud.io)
 ![npm](https://img.shields.io/npm/v/typescript-csharp)
 ![npm](https://img.shields.io/npm/dw/typescript-csharp)
 
-# Simple lightweight .NET Based TypeScript Library ![GitHub](https://img.shields.io/github/license/alexanderpuscher/typescript-csharp)
+## Setup
+```bash
+npm i typescript-csharp
+```
 
-## v0.3.0
+---
+
+## Features v0.3.1
 
 ### Guid
 ```typescript
@@ -145,5 +152,11 @@
 - equals(ts: TimeSpan): boolean;
 ```
 
-## Next steps
-- RegularExpressions
+---
+
+## License
+
+![GitHub](https://img.shields.io/github/license/alexanderpuscher/typescript-csharp)
+
+- **[MIT license](http://opensource.org/licenses/mit-license.php)**
+- Copyright 2020 © Alexander Puscher.
