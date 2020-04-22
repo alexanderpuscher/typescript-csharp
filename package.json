@@ -1,6 +1,6 @@
 {
   "name": "typescript-csharp",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Simple lightweight .NET Based TypeScript Library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -31,7 +31,8 @@
     "list",
     "dictionary",
     "datetime",
-    "timespan"
+    "timespan",
+    "queue"
   ],
   "author": "Alexander Puscher <a.puscher@gmx.net>",
   "license": "MIT",

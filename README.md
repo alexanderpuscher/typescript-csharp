@@ -10,14 +10,21 @@
 npm i typescript-csharp
 ```
 
+Works with Angular & Node.js!
+
 ---
 
-## Features v0.3.1
+## Features v0.3.3
 
 ### Guid
 ```typescript
 - static Empty: string;
-- static newGuid(): string;
+- static isGuid(guid: any): boolean;
+- static newGuid(): Guid;
+- static parse(guid: string): Guid;
+- equals(guid: Guid): boolean;
+- toString(): string;
+- toJSON(): any;
 ```  
 
 ### String
@@ -35,7 +42,9 @@ npm i typescript-csharp
 - toString(): string;
 ```
 
-### Generic Collections (List & Dictionary)
+### Generic Collections
+
+#### List & Dictionary
 ```typescript
 - IEnumerable<T>
     - elementAt(index: number): T;
@@ -86,6 +95,28 @@ npm i typescript-csharp
     - containsKey(key: TKey): boolean;
     - containsValue(value: TValue): boolean;
     - tryGetValue(key: TKey): TValue;
+```
+
+#### Queue
+```typescript
+- length: number;
+- clear(): void;
+- contains(item: T): boolean;
+- enqueue(item: T): void;
+- dequeue(): T;
+- peek(): T;
+- toArray(): T[];
+```
+
+#### Stack
+```typescript
+- length: number;
+- clear(): void;
+- contains(item: T): boolean;
+- push(item: T): void;
+- pop(): T;
+- peek(): T;
+- toArray(): T[];
 ```
 
 ### DateTime

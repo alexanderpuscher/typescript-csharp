@@ -3,7 +3,7 @@
  * Licensing: MIT https://github.com/alexanderpuscher/typescript-csharp/blob/master/LICENSE
  */
 
-import { String } from './String';
+import { String } from '../String';
 
 export class StringBuilder {
     private values: string[] = [];

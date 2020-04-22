@@ -6,6 +6,6 @@ test('Guid is empty', () => {
 
 test('Guid is valid', () => {
     let guid = Guid.newGuid();
-    expect(guid).not.toBe('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx');
+    expect(guid).not.toBe(Guid.parse('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'));
     expect(guid).not.toBe(Guid.Empty);
 });

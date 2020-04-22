@@ -5,7 +5,7 @@
 
 import { Group } from './Group';
 import { List } from './List';
-import { MULTIPLE_INSTANCES_FOUND, ITEM_NOT_FOUND, DUPLICATE_KEY } from '../Shared';
+import { MULTIPLE_INSTANCES_FOUND, ITEM_NOT_FOUND, DUPLICATE_KEY } from '../../Shared';
 import { KeyValuePair } from './KeyValuePair';
 import { IEnumerable } from './IEnumerable';
 import { IComparer } from './IComparer';

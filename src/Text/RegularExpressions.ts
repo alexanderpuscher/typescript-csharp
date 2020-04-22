@@ -3,9 +3,6 @@
  * Licensing: MIT https://github.com/alexanderpuscher/typescript-csharp/blob/master/LICENSE
  */
 
-import { IEnumerable } from "./IEnumerable";
+export class RegularExpressions {
 
-export interface IGroup<T> {
-  groups: any[];
-  list: IEnumerable<T>;
 }

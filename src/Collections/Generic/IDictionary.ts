@@ -3,8 +3,8 @@
  * Licensing: MIT https://github.com/alexanderpuscher/typescript-csharp/blob/master/LICENSE
  */
 
-import { KeyValuePair } from "./KeyValuePair";
-import { IEnumerable } from "./IEnumerable";
+import { KeyValuePair } from './KeyValuePair';
+import { IEnumerable } from './IEnumerable';
 
 export interface IDictionary<TKey, TValue> extends IEnumerable<KeyValuePair<TKey, TValue>> {
     add(key: TKey, value: TValue): void;

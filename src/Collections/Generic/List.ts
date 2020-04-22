@@ -4,11 +4,11 @@
  */
 
 import { Group } from './Group';
-import { ITEM_NOT_FOUND, MULTIPLE_INSTANCES_FOUND } from '../Shared';
-import { IList } from './IList';
+import { ITEM_NOT_FOUND, MULTIPLE_INSTANCES_FOUND } from '../../Shared';
 import { IEnumerable } from './IEnumerable';
 import { IComparer } from './IComparer';
 import { IEqualityComparer } from './IEqualityComparer';
+import { IList } from './IList';
 
 export class List<T> implements IList<T> {
   private list: T[] = new Array<T>();
