@@ -32,7 +32,8 @@
     "dictionary",
     "datetime",
     "timespan",
-    "queue"
+    "queue",
+    "stack"
   ],
   "author": "Alexander Puscher <a.puscher@gmx.net>",
   "license": "MIT",
