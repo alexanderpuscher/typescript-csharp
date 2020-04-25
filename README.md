@@ -14,7 +14,7 @@ Works with Angular & Node.js!
 
 ---
 
-## Features v0.3.3
+## Features v0.3.4
 
 ### Guid
 ```typescript
@@ -84,16 +84,17 @@ Works with Angular & Node.js!
 - IList<T> extends IEnumerable<T>
     - add(item: T): void;
     - addRange(items: T[]): void;
-    - remove(predicate: (item: T) => boolean): void;
+    - contains(item: T): boolean;
     - clear(): void;
+    - remove(predicate: (item: T) => boolean): void;
 
 - IDictionary<TKey, TValue> extends IEnumerable<T>
     - add(key: TKey, value: TValue): void;
     - addRange(items: KeyValuePair<TKey, TValue>[]): void;
-    - remove(predicate: (item: KeyValuePair<TKey, TValue>) => boolean): void;
     - clear(): void;
     - containsKey(key: TKey): boolean;
     - containsValue(value: TValue): boolean;
+    - remove(predicate: (item: KeyValuePair<TKey, TValue>) => boolean): void;
     - tryGetValue(key: TKey): TValue;
 ```
 

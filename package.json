@@ -1,6 +1,6 @@
 {
   "name": "typescript-csharp",
-  "version": "0.3.2",
+  "version": "0.3.4",
   "description": "Simple lightweight .NET Based TypeScript Library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -8,6 +8,7 @@ import { IEnumerable } from './IEnumerable';
 export interface IList<T> extends IEnumerable<T> {
   add(item: T): void;
   addRange(items: T[]): void;
+  contains(item: T): boolean;
   clear(): void;
   remove(predicate: (item: T) => boolean): void;
 }

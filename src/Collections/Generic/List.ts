@@ -9,20 +9,13 @@ import { IEnumerable } from './IEnumerable';
 import { IComparer } from './IComparer';
 import { IEqualityComparer } from './IEqualityComparer';
 import { IList } from './IList';
+import { CollectionBase } from './CollectionBase';
 
-export class List<T> implements IList<T> {
-  private list: T[] = new Array<T>();
-
-  constructor(array: T[] = new Array<T>()) {
-    if (array) {
-      this.list = array;
-    }
-  }
-
+export class List<T> extends CollectionBase<T> implements IList<T> {
   /* IList */
 
   add(item: T): void {
-    this.list.push(item);
+    this.array.push(item);
   }
 
   addRange(items: T[]): void {
@@ -32,17 +25,13 @@ export class List<T> implements IList<T> {
   remove(predicate: (item: T) => boolean): void {
     let temp = new Array<T>();
 
-    this.list.forEach((element) => {
+    this.array.forEach((element) => {
       if (!predicate(element)) {
         temp.push(element);
       }
     });
 
-    this.list = temp;
-  }
-
-  clear(): void {
-    this.list = new Array<T>();
+    this.array = temp;
   }
 
   /* IEnumerable */
@@ -51,13 +40,9 @@ export class List<T> implements IList<T> {
     return this;
   }
 
-  get length(): number {
-    return this.list.length;
-  }
-
   elementAt(index: number): T {
     try {
-      return this.list[index];
+      return this.array[index];
     } catch (e) {
       return null;
     }
@@ -65,11 +50,11 @@ export class List<T> implements IList<T> {
 
   any(predicate?: (item: T) => boolean): boolean {
     if (!predicate) {
-      return this.list.length > 0;
+      return this.array.length > 0;
     }
 
-    for (let i = 0; i < this.list.length; i++) {
-      if (predicate(this.list[i])) {
+    for (let i = 0; i < this.array.length; i++) {
+      if (predicate(this.array[i])) {
         return true;
       }
     }
@@ -78,11 +63,11 @@ export class List<T> implements IList<T> {
 
   all(predicate?: (item: T) => boolean): boolean {
     if (!predicate) {
-      return this.list.length > 0;
+      return this.array.length > 0;
     }
 
-    for (let i = 0; i < this.list.length; i++) {
-      if (!predicate(this.list[i])) {
+    for (let i = 0; i < this.array.length; i++) {
+      if (!predicate(this.array[i])) {
         return false;
       }
     }
@@ -90,7 +75,7 @@ export class List<T> implements IList<T> {
   }
 
   single(predicate: (item: T) => boolean = null): T {
-    if (this.list.length <= 0) {
+    if (this.array.length <= 0) {
       throw ITEM_NOT_FOUND;
     }
 
@@ -104,11 +89,11 @@ export class List<T> implements IList<T> {
       return item;
     }
 
-    return this.list[0];
+    return this.array[0];
   }
 
   first(predicate: (item: T) => boolean = null): T {
-    if (this.list.length <= 0) {
+    if (this.array.length <= 0) {
       throw ITEM_NOT_FOUND;
     }
 
@@ -122,11 +107,11 @@ export class List<T> implements IList<T> {
       return item;
     }
 
-    return this.list[0];
+    return this.array[0];
   }
 
   last(predicate: (item: T) => boolean = null): T {
-    if (this.list.length <= 0) {
+    if (this.array.length <= 0) {
       throw ITEM_NOT_FOUND;
     }
 
@@ -140,13 +125,13 @@ export class List<T> implements IList<T> {
       return item;
     }
 
-    return this.list[this.list.length - 1];
+    return this.array[this.array.length - 1];
   }
 
   singleOrDefault(predicate: (item: T) => boolean): T {
     let temp = new Array<T>();
 
-    this.list.filter((element) => {
+    this.array.filter((element) => {
       if (predicate(element)) {
         temp.push(element);
       }
@@ -165,7 +150,7 @@ export class List<T> implements IList<T> {
 
   firstOrDefault(predicate: (item: T) => boolean): T {
     for (let i = 0; i < this.length; i++) {
-      let item = this.list[i];
+      let item = this.array[i];
       if (predicate(item)) {
         return item;
       }
@@ -176,7 +161,7 @@ export class List<T> implements IList<T> {
 
   lastOrDefault(predicate: (item: T) => boolean): T {
     for (let i = this.length; i >= 0; i--) {
-      let item = this.list[i - 1];
+      let item = this.array[i - 1];
       if (predicate(item)) {
         return item;
       }
@@ -188,7 +173,7 @@ export class List<T> implements IList<T> {
   where(predicate: (item: T) => boolean): IEnumerable<T> {
     let temp = new List<T>();
 
-    this.list.filter((element) => {
+    this.array.filter((element) => {
       if (predicate(element)) {
         temp.add(element);
       }
@@ -206,11 +191,7 @@ export class List<T> implements IList<T> {
   }
 
   forEach(predicate: (item: T) => void): void {
-    this.list.forEach((x) => predicate(x));
-  }
-
-  toArray(): T[] {
-    return this.list;
+    this.array.forEach((x) => predicate(x));
   }
 
   join<TOuter, TMatch, TResult>(
@@ -222,7 +203,7 @@ export class List<T> implements IList<T> {
   ): IEnumerable<TResult> {
     let resultList = new List<TResult>();
 
-    this.list.forEach((x) => {
+    this.array.forEach((x) => {
       let outerEntries = outer.toArray().filter((y) => conditionInner(x) === conditionOuter(y));
 
       if (leftJoin && outerEntries && outerEntries.length <= 0) {
@@ -237,7 +218,7 @@ export class List<T> implements IList<T> {
 
   groupBy(predicate: (item: T) => T[]): IEnumerable<Group<T>> {
     let groups = {};
-    this.list.forEach(function (o) {
+    this.array.forEach(function (o) {
       let group = JSON.stringify(predicate(o));
       groups[group] = groups[group] || [];
       groups[group].push(o);
@@ -254,7 +235,7 @@ export class List<T> implements IList<T> {
   }
 
   orderBy(comparer: IComparer<T>): IEnumerable<T> {
-    let temp = this.list.sort((x, y) => comparer.compare(x, y));
+    let temp = this.array.sort((x, y) => comparer.compare(x, y));
 
     return new List<T>(temp);
   }
@@ -280,7 +261,7 @@ export class List<T> implements IList<T> {
 
   skip(no: number): IEnumerable<T> {
     if (no > 0) {
-      return new List(this.list.slice(no, this.list.length - 1));
+      return new List(this.array.slice(no, this.array.length - 1));
     }
 
     return this;
@@ -288,7 +269,7 @@ export class List<T> implements IList<T> {
 
   take(no: number): IEnumerable<T> {
     if (no > 0) {
-      return new List(this.list.slice(0, no));
+      return new List(this.array.slice(0, no));
     }
 
     return this;
@@ -296,7 +277,7 @@ export class List<T> implements IList<T> {
 
   sum(predicate: (item: T) => number): number {
     let sum: number = 0;
-    this.list.forEach((x) => (sum = sum + predicate(x)));
+    this.array.forEach((x) => (sum = sum + predicate(x)));
 
     return sum;
   }
@@ -308,7 +289,7 @@ export class List<T> implements IList<T> {
   min(predicate: (item: T) => number): number {
     let min: number = 0;
     let i = 0;
-    this.list.forEach((x) => {
+    this.array.forEach((x) => {
       if (i === 0) {
         min = predicate(x);
       } else {
@@ -326,7 +307,7 @@ export class List<T> implements IList<T> {
   max(predicate: (item: T) => number): number {
     let max: number = 0;
     let i = 0;
-    this.list.forEach((x) => {
+    this.array.forEach((x) => {
       if (i === 0) {
         max = predicate(x);
       } else {
@@ -347,7 +328,7 @@ export class List<T> implements IList<T> {
     }
 
     let count: number = 0;
-    this.list.forEach((x) => {
+    this.array.forEach((x) => {
       if (predicate(x)) {
         count++;
       }

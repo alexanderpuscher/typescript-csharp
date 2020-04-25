@@ -4,32 +4,9 @@
  */
 
 import { IStack } from "./IStack";
+import { CollectionBase } from "./CollectionBase";
 
-export class Stack<T> implements IStack<T> {
-    private array: T[] = new Array<T>();
-
-    constructor(array: any[] = new Array<any>()) {
-        if (array) {
-            this.array = array;
-        }
-    }
-
-    get length(): number {
-        return this.array.length;
-    }
-
-    clear(): void {
-        this.array = new Array<any>();
-    }
-
-    contains(item: T): boolean {
-        if (this.array.length === 0) {
-            return false;
-        }
-
-        return this.array.indexOf(item) !== -1;
-    }
-
+export class Stack<T> extends CollectionBase<T> implements IStack<T> {
     peek(): T | null {
         if (this.array.length === 0) {
             return null;
@@ -48,9 +25,5 @@ export class Stack<T> implements IStack<T> {
 
     push(item: T): void {
         this.array.push(item);
-    }
-
-    toArray(): T[] {
-        return this.array;
     }
 }

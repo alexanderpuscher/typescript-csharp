@@ -11,17 +11,10 @@ import { IEnumerable } from './IEnumerable';
 import { IComparer } from './IComparer';
 import { IEqualityComparer } from './IEqualityComparer';
 import { IDictionary } from './IDictionary';
+import { CollectionBase } from './CollectionBase';
 
-export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
-  private list: KeyValuePair<TKey, TValue>[] = new Array<KeyValuePair<TKey, TValue>>();
-
-  constructor(list: KeyValuePair<TKey, TValue>[] = null) {
-    if (list) {
-      this.list = list;
-    }
-  }
-
-  /* IList */
+export class Dictionary<TKey, TValue> extends CollectionBase<KeyValuePair<TKey, TValue>> implements IDictionary<TKey, TValue> {
+  /* IDictionary */
 
   add(key: TKey, value: TValue): void {
     let pair = new KeyValuePair<TKey, TValue>(key, value);
@@ -30,27 +23,23 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
       throw DUPLICATE_KEY;
     }
 
-    this.list.push(pair);
+    this.array.push(pair);
   }
 
   addRange(items: KeyValuePair<TKey, TValue>[]): void {
     items.forEach((x) => this.add(x.key, x.value));
   }
 
-  clear(): void {
-    this.list = new Array<KeyValuePair<TKey, TValue>>();
-  }
-
   remove(predicate: (item: KeyValuePair<TKey, TValue>) => boolean): void {
     let temp = new Array<KeyValuePair<TKey, TValue>>();
 
-    this.list.forEach((element) => {
+    this.array.forEach((element) => {
       if (!predicate(element)) {
         temp.push(element);
       }
     });
 
-    this.list = temp;
+    this.array = temp;
   }
 
   containsKey(key: TKey): boolean {
@@ -77,13 +66,9 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
     return this;
   }
 
-  get length(): number {
-    return this.list.length;
-  }
-
   elementAt(index: number): KeyValuePair<TKey, TValue> {
     try {
-      return this.list[index];
+      return this.array[index];
     } catch (e) {
       return null;
     }
@@ -91,11 +76,11 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
 
   any(predicate?: (item: KeyValuePair<TKey, TValue>) => boolean): boolean {
     if (!predicate) {
-      return this.list.length > 0;
+      return this.array.length > 0;
     }
 
-    for (let i = 0; i < this.list.length; i++) {
-      if (predicate(this.list[i])) {
+    for (let i = 0; i < this.array.length; i++) {
+      if (predicate(this.array[i])) {
         return true;
       }
     }
@@ -104,11 +89,11 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
 
   all(predicate?: (item: KeyValuePair<TKey, TValue>) => boolean): boolean {
     if (!predicate) {
-      return this.list.length > 0;
+      return this.array.length > 0;
     }
 
-    for (let i = 0; i < this.list.length; i++) {
-      if (!predicate(this.list[i])) {
+    for (let i = 0; i < this.array.length; i++) {
+      if (!predicate(this.array[i])) {
         return false;
       }
     }
@@ -116,7 +101,7 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
   }
 
   single(predicate: (item: KeyValuePair<TKey, TValue>) => boolean = null): KeyValuePair<TKey, TValue> {
-    if (this.list.length <= 0) {
+    if (this.array.length <= 0) {
       throw ITEM_NOT_FOUND;
     }
 
@@ -130,11 +115,11 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
       return item;
     }
 
-    return this.list[0];
+    return this.array[0];
   }
 
   first(predicate: (item: KeyValuePair<TKey, TValue>) => boolean = null): KeyValuePair<TKey, TValue> {
-    if (this.list.length <= 0) {
+    if (this.array.length <= 0) {
       throw ITEM_NOT_FOUND;
     }
 
@@ -148,11 +133,11 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
       return item;
     }
 
-    return this.list[0];
+    return this.array[0];
   }
 
   last(predicate: (item: KeyValuePair<TKey, TValue>) => boolean): KeyValuePair<TKey, TValue> {
-    if (this.list.length <= 0) {
+    if (this.array.length <= 0) {
       throw ITEM_NOT_FOUND;
     }
 
@@ -166,13 +151,13 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
       return item;
     }
 
-    return this.list[this.list.length - 1];
+    return this.array[this.array.length - 1];
   }
 
   singleOrDefault(predicate: (item: KeyValuePair<TKey, TValue>) => boolean): KeyValuePair<TKey, TValue> {
     let temp = new Array<KeyValuePair<TKey, TValue>>();
 
-    this.list.filter((element) => {
+    this.array.filter((element) => {
       if (predicate(element)) {
         temp.push(element);
       }
@@ -191,7 +176,7 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
 
   firstOrDefault(predicate: (item: KeyValuePair<TKey, TValue>) => boolean): KeyValuePair<TKey, TValue> {
     for (let i = 0; i < this.length; i++) {
-      let item = this.list[i];
+      let item = this.array[i];
       if (predicate(item)) {
         return item;
       }
@@ -202,7 +187,7 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
 
   lastOrDefault(predicate: (item: KeyValuePair<TKey, TValue>) => boolean): KeyValuePair<TKey, TValue> {
     for (let i = this.length; i >= 0; i--) {
-      let item = this.list[i - 1];
+      let item = this.array[i - 1];
       if (predicate(item)) {
         return item;
       }
@@ -214,7 +199,7 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
   where(predicate: (item: KeyValuePair<TKey, TValue>) => boolean): IDictionary<TKey, TValue> {
     let temp = new Dictionary<TKey, TValue>();
 
-    this.list.filter((element) => {
+    this.array.filter((element) => {
       if (predicate(element)) {
         temp.add(element.key, element.value);
       }
@@ -232,11 +217,7 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
   }
 
   forEach(predicate: (item: KeyValuePair<TKey, TValue>) => void): void {
-    this.list.forEach((x) => predicate(x));
-  }
-
-  toArray(): KeyValuePair<TKey, TValue>[] {
-    return this.list;
+    this.array.forEach((x) => predicate(x));
   }
 
   join<TOuter, TMatch, TResult>(
@@ -248,7 +229,7 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
   ): IEnumerable<TResult> {
     let resultList = new List<TResult>();
 
-    this.list.forEach((x) => {
+    this.array.forEach((x) => {
       let outerEntries = outer.toArray().filter((y) => conditionInner(x) === conditionOuter(y));
 
       if (leftJoin && outerEntries && outerEntries.length <= 0) {
@@ -265,7 +246,7 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
     predicate: (item: KeyValuePair<TKey, TValue>) => KeyValuePair<TKey, TValue>[],
   ): IEnumerable<Group<KeyValuePair<TKey, TValue>>> {
     let groups = {};
-    this.list.forEach(function (o) {
+    this.array.forEach(function (o) {
       let group = JSON.stringify(predicate(o));
       groups[group] = groups[group] || [];
       groups[group].push(o);
@@ -282,7 +263,7 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
   }
 
   orderBy(comparer: IComparer<KeyValuePair<TKey, TValue>>): IEnumerable<KeyValuePair<TKey, TValue>> {
-    let temp = this.list.sort((x, y) => comparer.compare(x, y));
+    let temp = this.array.sort((x, y) => comparer.compare(x, y));
 
     return new List<KeyValuePair<TKey, TValue>>(temp);
   }
@@ -308,7 +289,7 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
 
   skip(no: number): IDictionary<TKey, TValue> {
     if (no > 0) {
-      return new Dictionary(this.list.slice(no, this.list.length - 1));
+      return new Dictionary(this.array.slice(no, this.array.length - 1));
     }
 
     return this;
@@ -316,7 +297,7 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
 
   take(no: number): IDictionary<TKey, TValue> {
     if (no > 0) {
-      return new Dictionary(this.list.slice(0, no));
+      return new Dictionary(this.array.slice(0, no));
     }
 
     return this;
@@ -324,7 +305,7 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
 
   sum(predicate: (item: KeyValuePair<TKey, TValue>) => number): number {
     let sum: number = 0;
-    this.list.forEach((x) => (sum = sum + predicate(x)));
+    this.array.forEach((x) => (sum = sum + predicate(x)));
 
     return sum;
   }
@@ -336,7 +317,7 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
   min(predicate: (item: KeyValuePair<TKey, TValue>) => number): number {
     let min: number = 0;
     let i = 0;
-    this.list.forEach((x) => {
+    this.array.forEach((x) => {
       if (i === 0) {
         min = predicate(x);
       } else {
@@ -354,7 +335,7 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
   max(predicate: (item: KeyValuePair<TKey, TValue>) => number): number {
     let max: number = 0;
     let i = 0;
-    this.list.forEach((x) => {
+    this.array.forEach((x) => {
       if (i === 0) {
         max = predicate(x);
       } else {
@@ -375,7 +356,7 @@ export class Dictionary<TKey, TValue> implements IDictionary<TKey, TValue> {
     }
 
     let count: number = 0;
-    this.list.forEach((x) => {
+    this.array.forEach((x) => {
       if (predicate(x)) {
         count++;
       }
