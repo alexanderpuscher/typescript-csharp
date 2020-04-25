@@ -157,10 +157,8 @@ export class Dictionary<TKey, TValue> extends CollectionBase<KeyValuePair<TKey, 
   singleOrDefault(predicate: (item: KeyValuePair<TKey, TValue>) => boolean): KeyValuePair<TKey, TValue> {
     let temp = new Array<KeyValuePair<TKey, TValue>>();
 
-    this.array.filter((element) => {
-      if (predicate(element)) {
-        temp.push(element);
-      }
+    temp = this.array.filter((element) => {
+      return predicate(element);
     });
 
     if (temp.length > 1) {
@@ -197,15 +195,11 @@ export class Dictionary<TKey, TValue> extends CollectionBase<KeyValuePair<TKey, 
   }
 
   where(predicate: (item: KeyValuePair<TKey, TValue>) => boolean): IDictionary<TKey, TValue> {
-    let temp = new Dictionary<TKey, TValue>();
-
-    this.array.filter((element) => {
-      if (predicate(element)) {
-        temp.add(element.key, element.value);
-      }
+    let temp = this.array.filter((element) => {
+      return predicate(element);
     });
 
-    return temp;
+    return new Dictionary<TKey, TValue>(temp);
   }
 
   select<TResult>(predicate: (item: KeyValuePair<TKey, TValue>) => TResult): IEnumerable<TResult> {

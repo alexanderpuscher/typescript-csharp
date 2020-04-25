@@ -131,10 +131,8 @@ export class List<T> extends CollectionBase<T> implements IList<T> {
   singleOrDefault(predicate: (item: T) => boolean): T {
     let temp = new Array<T>();
 
-    this.array.filter((element) => {
-      if (predicate(element)) {
-        temp.push(element);
-      }
+    temp = this.array.filter((element) => {
+      return predicate(element);
     });
 
     if (temp.length > 1) {
@@ -171,15 +169,11 @@ export class List<T> extends CollectionBase<T> implements IList<T> {
   }
 
   where(predicate: (item: T) => boolean): IEnumerable<T> {
-    let temp = new List<T>();
-
-    this.array.filter((element) => {
-      if (predicate(element)) {
-        temp.add(element);
-      }
+    let temp = this.array.filter((element) => {
+      return predicate(element);
     });
 
-    return temp;
+    return new List<T>(temp);
   }
 
   select<TResult>(predicate: (item: T) => TResult): IEnumerable<TResult> {

@@ -63,7 +63,7 @@ export class DateTime {
                 rd = new Date(a, b, c, d, e, f, g) as any;
         }
         rd.__proto__ = DateTime.prototype;
-        return rd as any;
+        return rd;
     }
 
     get day(): number {
