@@ -3,6 +3,7 @@
  * Licensing: MIT https://github.com/alexanderpuscher/typescript-csharp/blob/master/LICENSE
  */
 
+export * from './Convert';
 export * from './DateTime';
 export * from './Guid';
 export * from './String';

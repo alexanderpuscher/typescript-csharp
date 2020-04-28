@@ -14,7 +14,13 @@ Works with Angular & Node.js!
 
 ---
 
-## Features v0.3.4
+## Features v0.4.0
+
+### Convert
+```typescript
+- static toBase64String(value: string): string;
+- static fromBase64String(value: string): string;
+```
 
 ### Guid
 ```typescript
