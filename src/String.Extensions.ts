@@ -3,14 +3,8 @@
  * Licensing: MIT https://github.com/alexanderpuscher/typescript-csharp/blob/master/LICENSE
  */
 
-interface String {
-  equals(this: string, value: string): boolean;
+if (!String.prototype.equals) {
+    String.prototype.equals = function (value: string): boolean {
+        return this === value;
+    };
 }
-
-((prototype: any) => {
-  if (typeof prototype.toList === 'function') return;
-
-  prototype.equals = function (value: string): boolean {
-    return this === value;
-  };
-})(String.prototype);

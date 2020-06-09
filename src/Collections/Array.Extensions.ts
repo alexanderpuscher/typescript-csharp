@@ -5,14 +5,8 @@
 
 import { List } from './Generic/List';
 
-interface Array<T> {
-  toList(this: T[]): List<T>;
+if (!Array.prototype.toList) {
+    Array.prototype.toList = function <T>(this: Array<T>): List<T> {
+        return new List<T>((this as unknown) as T[]);
+    }
 }
-
-((prototype: any) => {
-  if (typeof prototype.toList === 'function') return;
-
-  prototype.toList = function toList<T>(this: T[]) {
-    return new List<T>((this as unknown) as T[]);
-  };
-})(Array.prototype);
