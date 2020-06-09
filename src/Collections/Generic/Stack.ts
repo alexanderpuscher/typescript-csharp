@@ -3,27 +3,27 @@
  * Licensing: MIT https://github.com/alexanderpuscher/typescript-csharp/blob/master/LICENSE
  */
 
-import { IStack } from "./IStack";
-import { CollectionBase } from "./CollectionBase";
+import { IStack } from './IStack';
+import { CollectionBase } from './CollectionBase';
 
 export class Stack<T> extends CollectionBase<T> implements IStack<T> {
-    peek(): T | null {
-        if (this.array.length === 0) {
-            return null;
-        }
-
-        return this.array[this.array.length - 1];
+  peek(): T | null {
+    if (this.array.length === 0) {
+      return null;
     }
 
-    pop(): T | null {
-        if (this.array.length === 0) {
-            return null;
-        }
+    return this.array[this.array.length - 1];
+  }
 
-        return this.array.pop();
+  pop(): T | null {
+    if (this.array.length === 0) {
+      return null;
     }
 
-    push(item: T): void {
-        this.array.push(item);
-    }
+    return this.array.pop();
+  }
+
+  push(item: T): void {
+    this.array.push(item);
+  }
 }

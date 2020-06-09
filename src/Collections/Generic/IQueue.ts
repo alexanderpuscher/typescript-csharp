@@ -4,11 +4,11 @@
  */
 
 export interface IQueue<T> {
-    length: number;
-    clear(): void;
-    contains(item: T): boolean;
-    enqueue(item: T): void;
-    dequeue(): T;
-    peek(): T;
-    toArray(): T[];
+  length: number;
+  clear(): void;
+  contains(item: T): boolean;
+  enqueue(item: T): void;
+  dequeue(): T;
+  peek(): T;
+  toArray(): T[];
 }

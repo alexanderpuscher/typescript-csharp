@@ -13,7 +13,8 @@ import { IEqualityComparer } from './IEqualityComparer';
 import { IDictionary } from './IDictionary';
 import { CollectionBase } from './CollectionBase';
 
-export class Dictionary<TKey, TValue> extends CollectionBase<KeyValuePair<TKey, TValue>> implements IDictionary<TKey, TValue> {
+export class Dictionary<TKey, TValue> extends CollectionBase<KeyValuePair<TKey, TValue>>
+  implements IDictionary<TKey, TValue> {
   /* IDictionary */
 
   add(key: TKey, value: TValue): void {

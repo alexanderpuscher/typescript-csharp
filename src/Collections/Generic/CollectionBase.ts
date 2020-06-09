@@ -3,33 +3,32 @@
  * Licensing: MIT https://github.com/alexanderpuscher/typescript-csharp/blob/master/LICENSE
  */
 
-
 export abstract class CollectionBase<T> {
-    protected array: T[] = new Array<T>();
+  protected array: T[] = new Array<T>();
 
-    constructor(array: T[] = new Array<T>()) {
-        if (array) {
-            this.array = array;
-        }
+  constructor(array: T[] = new Array<T>()) {
+    if (array) {
+      this.array = array;
+    }
+  }
+
+  get length(): number {
+    return this.array.length;
+  }
+
+  clear(): void {
+    this.array = new Array<T>();
+  }
+
+  contains(item: T): boolean {
+    if (this.array.length === 0) {
+      return false;
     }
 
-    get length(): number {
-        return this.array.length;
-    }
+    return this.array.indexOf(item) !== -1;
+  }
 
-    clear(): void {
-        this.array = new Array<T>();
-    }
-
-    contains(item: T): boolean {
-        if (this.array.length === 0) {
-            return false;
-        }
-
-        return this.array.indexOf(item) !== -1;
-    }
-
-    toArray(): T[] {
-        return this.array;
-    }
+  toArray(): T[] {
+    return this.array;
+  }
 }

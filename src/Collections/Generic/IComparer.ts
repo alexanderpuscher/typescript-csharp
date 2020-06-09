@@ -4,5 +4,5 @@
  */
 
 export interface IComparer<T> {
-    compare(x: T, y: T): number;
+  compare(x: T, y: T): number;
 }

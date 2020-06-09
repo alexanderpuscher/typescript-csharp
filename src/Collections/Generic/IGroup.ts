@@ -6,6 +6,6 @@
 import { IEnumerable } from './IEnumerable';
 
 export interface IGroup<T> {
-    groups: any[];
-    list: IEnumerable<T>;
+  groups: any[];
+  list: IEnumerable<T>;
 }

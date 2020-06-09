@@ -3,16 +3,16 @@
  * Licensing: MIT https://github.com/alexanderpuscher/typescript-csharp/blob/master/LICENSE
  */
 
-import { List } from "./Generic/List"
+import { List } from './Generic/List';
 
 interface Array<T> {
-    toList(this: Array<T>): List<T>;
+  toList(this: T[]): List<T>;
 }
 
 ((prototype: any) => {
-    if (typeof prototype.toList === "function") return;
+  if (typeof prototype.toList === 'function') return;
 
-    prototype.toList = function toList<T>(this: Array<T>) {
-        return new List<T>(this as unknown as T[]);
-    }
+  prototype.toList = function toList<T>(this: T[]) {
+    return new List<T>((this as unknown) as T[]);
+  };
 })(Array.prototype);

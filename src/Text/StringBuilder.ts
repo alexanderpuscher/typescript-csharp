@@ -6,25 +6,25 @@
 import { String } from '../String';
 
 export class StringBuilder {
-    private values: string[] = [];
+  private values: string[] = [];
 
-    constructor(value: string = String.Empty) {
-        this.values = new Array(value);
-    }
+  constructor(value: string = String.Empty) {
+    this.values = new Array(value);
+  }
 
-    public append(value: string): void {
-        this.values.push(value);
-    }
+  public append(value: string): void {
+    this.values.push(value);
+  }
 
-    public appendLine(value: string): void {
-        this.values.push(value + '\n');
-    }
+  public appendLine(value: string): void {
+    this.values.push(value + '\n');
+  }
 
-    public clear(): void {
-        this.values = [];
-    }
+  public clear(): void {
+    this.values = [];
+  }
 
-    public toString(): string {
-        return this.values.join('');
-    }
+  public toString(): string {
+    return this.values.join('');
+  }
 }

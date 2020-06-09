@@ -4,11 +4,11 @@
  */
 
 export interface IStack<T> {
-    length: number;
-    clear(): void;
-    contains(item: T): boolean;
-    peek(): T;
-    pop(): T;
-    push(item: T): void;
-    toArray(): T[];
+  length: number;
+  clear(): void;
+  contains(item: T): boolean;
+  peek(): T;
+  pop(): T;
+  push(item: T): void;
+  toArray(): T[];
 }
