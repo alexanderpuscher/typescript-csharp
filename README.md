@@ -14,7 +14,7 @@ Works with Angular & Node.js!
 
 ---
 
-## Features v0.4.0
+## Features v0.5.3
 
 ### Convert
 ```typescript
@@ -190,6 +190,12 @@ Works with Angular & Node.js!
 - equals(ts: TimeSpan): boolean;
 ```
 
+
+#### Extensions
+```typescript
+- string.equals(value:string): boolean;
+- array.toList(): List<T>;
+```
 ---
 
 ## License
