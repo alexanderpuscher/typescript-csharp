@@ -3,6 +3,9 @@
  * Licensing: MIT https://github.com/alexanderpuscher/typescript-csharp/blob/master/LICENSE
  */
 
+import './String.Extensions';
+import './Collections/Array.Extensions';
+
 export * from './Convert';
 export * from './DateTime';
 export * from './Guid';
@@ -22,5 +25,4 @@ export * from './Collections/Generic/KeyValuePair';
 export * from './Collections/Generic/List';
 export * from './Collections/Generic/Queue';
 export * from './Collections/Generic/Stack';
-// export * from './Text/RegularExpressions';
 export * from './Text/StringBuilder';

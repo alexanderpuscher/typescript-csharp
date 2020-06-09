@@ -8,7 +8,7 @@ export class String {
 
   public static isNullOrWhiteSpace(value: string): boolean {
     try {
-      if (value === null || value === 'undefined') {
+      if (value === null || value.equals('undefined')) {
         return true;
       }
 

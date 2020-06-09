@@ -155,9 +155,7 @@ export class Dictionary<TKey, TValue> extends CollectionBase<KeyValuePair<TKey, 
   }
 
   singleOrDefault(predicate: (item: KeyValuePair<TKey, TValue>) => boolean): KeyValuePair<TKey, TValue> {
-    let temp = new Array<KeyValuePair<TKey, TValue>>();
-
-    temp = this.array.filter((element) => {
+    let temp = this.array.filter((element) => {
       return predicate(element);
     });
 

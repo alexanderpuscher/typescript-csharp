@@ -7,7 +7,7 @@
 export abstract class CollectionBase<T> {
     protected array: T[] = new Array<T>();
 
-    constructor(array: any[] = new Array<any>()) {
+    constructor(array: T[] = new Array<T>()) {
         if (array) {
             this.array = array;
         }
@@ -18,7 +18,7 @@ export abstract class CollectionBase<T> {
     }
 
     clear(): void {
-        this.array = new Array<any>();
+        this.array = new Array<T>();
     }
 
     contains(item: T): boolean {

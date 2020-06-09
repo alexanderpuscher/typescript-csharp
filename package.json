@@ -1,6 +1,6 @@
 {
   "name": "typescript-csharp",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Simple lightweight .NET Based TypeScript Library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -13,7 +13,8 @@
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "clean": "rm -rf coverage dist"
   },
   "repository": {
     "type": "git",

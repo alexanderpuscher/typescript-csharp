@@ -129,9 +129,7 @@ export class List<T> extends CollectionBase<T> implements IList<T> {
   }
 
   singleOrDefault(predicate: (item: T) => boolean): T {
-    let temp = new Array<T>();
-
-    temp = this.array.filter((element) => {
+    let temp = this.array.filter((element) => {
       return predicate(element);
     });
 
