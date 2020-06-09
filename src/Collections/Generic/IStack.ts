@@ -7,8 +7,8 @@ export interface IStack<T> {
   length: number;
   clear(): void;
   contains(item: T): boolean;
-  peek(): T;
-  pop(): T;
+  peek(): T | null;
+  pop(): T | null;
   push(item: T): void;
   toArray(): T[];
 }

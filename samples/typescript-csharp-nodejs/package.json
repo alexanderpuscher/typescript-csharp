@@ -11,7 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
-    "typescript-csharp": "^0.3.1"
+    "typescript-csharp": "file:../../typescript-csharp-0.5.2.tgz"
   },
   "devDependencies": {
     "@types/express": "^4.17.6",

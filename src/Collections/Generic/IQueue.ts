@@ -8,7 +8,7 @@ export interface IQueue<T> {
   clear(): void;
   contains(item: T): boolean;
   enqueue(item: T): void;
-  dequeue(): T;
-  peek(): T;
+  dequeue(): T | null;
+  peek(): T | null;
   toArray(): T[];
 }

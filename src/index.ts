@@ -2,10 +2,6 @@
  * @author alexanderpuscher / https://github.com/alexanderpuscher/
  * Licensing: MIT https://github.com/alexanderpuscher/typescript-csharp/blob/master/LICENSE
  */
-
-import './String.Extensions';
-import './Collections/Array.Extensions';
-
 export * from './Convert';
 export * from './DateTime';
 export * from './Guid';

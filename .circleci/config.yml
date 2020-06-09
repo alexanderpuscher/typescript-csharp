@@ -115,7 +115,7 @@ jobs:
 
       - run:
           name: Publish to NPM
-          command: npm publish --access=public
+          command: npm publish dist --access=public
 
 workflows:
   build:
