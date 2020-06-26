@@ -4,7 +4,7 @@ import { List } from './Collections/Generic/List';
 
 declare global {
     interface Array<T> {
-        toList(this: Array<T>): List<T>;
+        toList(this: T[]): List<T>;
     }
 
     interface String {
